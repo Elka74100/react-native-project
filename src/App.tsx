@@ -28,7 +28,9 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import { NavigationContainer } from '@react-navigation/native';
-
+import { Provider } from 'react-redux';
+import { store }  from './redux/store';
+import { Counter } from './components/Counter';
 
 const Section: React.FC<
   PropsWithChildren<{
@@ -68,6 +70,7 @@ const App = () => {
   };
 
   return (
+    <Provider store={store}>
     <NavigationContainer>{
       <SafeAreaView style={backgroundStyle}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
@@ -79,6 +82,7 @@ const App = () => {
             style={{
               backgroundColor: isDarkMode ? Colors.black : Colors.white,
             }}>
+            <Counter />
             <Section title="Step One">
               Edit <Text style={styles.highlight}>App.tsx</Text> to change this
               screen and then come back to see your edits.fefge
@@ -97,6 +101,7 @@ const App = () => {
         </ScrollView>
       </SafeAreaView>
     }</NavigationContainer>
+    </Provider>
   );
 };
 
