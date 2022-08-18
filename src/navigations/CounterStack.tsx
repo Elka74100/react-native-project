@@ -1,19 +1,19 @@
 import React from 'react';
 import { createStackNavigator } from "@react-navigation/stack"
-import CounterPageOne from '../screens/CounterPageOne';
-import CounterPageTwo from '../screens/CounterPageTwo';
+import CounterOne from '../screens/CounterStack/CounterOne';
+import CounterTwo from '../screens/CounterStack/CounterTwo';
 
 export type CounterStackParamlist = {
-    CounterPageOne: undefined;
-    CounterPageTwo: undefined;
+    CounterOne: undefined;
+    CounterTwo: undefined;
 }
 
 const CounterStack = () => {
     const Stack = createStackNavigator<CounterStackParamlist>();
     return (
-        <Stack.Navigator initialRouteName="CounterPageOne">
-            <Stack.Screen name="CounterPageOne" component={CounterPageOne}/>
-            <Stack.Screen name="CounterPageTwo" component={CounterPageTwo}/>
+        <Stack.Navigator initialRouteName="CounterOne">
+            <Stack.Screen name="CounterOne" component={CounterOne}/>
+            <Stack.Screen name="CounterTwo" component={CounterTwo}/>
         </Stack.Navigator>
     )
 }

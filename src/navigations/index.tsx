@@ -1,11 +1,11 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import CounterStack from './CounterStack'
+import Drawer from './Drawer'
 
 const AppNavContainer = () => {
     return (
         <NavigationContainer>
-            <CounterStack />
+            <Drawer />
         </NavigationContainer>
     )
 }

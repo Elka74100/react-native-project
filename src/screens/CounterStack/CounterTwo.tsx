@@ -1,11 +1,10 @@
 import React from "react"
-import { View, Text, StyleSheet } from "react-native"
-import Counter from "../components/Counter"
+import { View, StyleSheet } from "react-native"
+import Counter from "../../components/Counter"
 
-const CounterPageTwo = () => {
+const CounterTwo = () => {
     return (
         <View style={styles.container}>
-            <Text>CounterPageTwo</Text>
             <Counter/>
         </View>
     )
@@ -18,4 +17,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default CounterPageTwo
+export default CounterTwo
