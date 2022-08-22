@@ -18,10 +18,7 @@ const UserPost = ({ route }: Props) => {
         return (
             <View style={styles.container}>
                 {data.map(post => (
-                    <View>
-                        <Text>{post.title}</Text>
-                        <Text>ooo</Text>
-                    </View>
+                    <Text key={post.id}>{post.title}</Text>
                 ))}
             </View>
         )

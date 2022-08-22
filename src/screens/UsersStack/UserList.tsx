@@ -1,21 +1,34 @@
 import { StackScreenProps } from "@react-navigation/stack"
-import React from "react"
-import { View, StyleSheet, Text, Button } from "react-native"
+import React, { useEffect } from "react"
+import { StyleSheet, Text, Button, ScrollView, RefreshControl } from "react-native"
 import { UserParamlist } from "../../navigations/UserStack"
 import { useGetUsersQuery } from "../../redux/api/User/userSlice"
 
 type Props = StackScreenProps<UserParamlist, "UserList">
 
 const UserList = ({ navigation }: Props) => {
-    const { data, error, isLoading } = useGetUsersQuery(undefined)
+    const { data, isLoading, isFetching, refetch } = useGetUsersQuery(undefined)
+    const [refreshing, setRefreshing] = React.useState(false);
+
+    useEffect(() => {
+        setRefreshing(isFetching)
+    }, [isFetching])
 
     if (isLoading) {
         return <Text>Loading...</Text>
-    }
+    } 
 
     if (data) {
         return (
-            <View style={styles.container}>
+            <ScrollView 
+                style={styles.container}
+                refreshControl={
+                    <RefreshControl
+                    refreshing={refreshing}
+                    onRefresh={() => refetch()}
+                    />
+                }
+            >
                 {data.map(user => (
                     <Button 
                         key={user.id} 
@@ -25,7 +38,7 @@ const UserList = ({ navigation }: Props) => {
                         })}
                     />
                 ))}
-            </View>
+            </ScrollView>
         )
     }
 
@@ -35,7 +48,6 @@ const UserList = ({ navigation }: Props) => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      alignItems: 'center',
     }
 });
 
