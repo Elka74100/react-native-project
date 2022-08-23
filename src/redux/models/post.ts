@@ -3,8 +3,8 @@ interface Post {
     title: string;
     body: string;
     userId: string;
-    date: Date;
-    reactions: Reaction;
+    date?: Date;
+    reactions?: Reaction;
 }
 
 interface Reaction {

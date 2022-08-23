@@ -1,14 +1,29 @@
 import { StackScreenProps } from "@react-navigation/stack"
-import React from "react"
-import { View, StyleSheet, Text, Button } from "react-native"
+import React, { useState } from "react"
+import { StyleSheet, Text, ScrollView, Button, TextInput } from "react-native"
 import { UserParamlist } from "../../navigations/UserStack"
-import { useGetPostsByUserIdQuery } from "../../redux/api/Post/postSlice"
+import { useGetPostsByUserIdQuery, useUpdatePostMutation } from "../../redux/api/postApiSlice"
+import { Card } from "@rneui/themed";
+import Post from "../../redux/models/post"
 
 type Props = StackScreenProps<UserParamlist, "UserPost">
 
 const UserPost = ({ route }: Props) => {
     const { userId } = route.params
-    const { data, error, isLoading } = useGetPostsByUserIdQuery(userId)
+    const { data, isLoading } = useGetPostsByUserIdQuery(userId)
+    const [ updatePost ] = useUpdatePostMutation()
+    const [ postToEdit, setPostToEdit] = useState<number | null>()
+    const [ text, setText ] = useState("");
+
+    const editText = (id:number, text:string) => {
+        setPostToEdit(id)
+        setText(text)
+    }
+
+    const submitText = (post: Post, text: string) => {
+        setPostToEdit(null)
+        updatePost({ id: post.id, userId: post.userId, title: post.title, body: text })
+    }
 
     if (isLoading) {
         return <Text>Loading...</Text>
@@ -16,11 +31,39 @@ const UserPost = ({ route }: Props) => {
 
     if (data) {
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 {data.map(post => (
-                    <Text key={post.id}>{post.title}</Text>
+                    <Card key={post.id}>
+                        {
+                            <>
+                                <Card.Title>{post.title}</Card.Title>
+                                <Card.Divider/>
+                                {
+                                    postToEdit === post.id 
+                                    ? (
+                                        <>
+                                            <TextInput 
+                                                style={styles.input}
+                                                multiline
+                                                onChangeText={setText} 
+                                                value={text}
+                                                />
+                                            <Button title="Submit" onPress={() => submitText(post, text)}></Button>
+                                        </>
+                                    ) 
+                                    : (
+                                        <>
+                                            <Text>{post.body}</Text>
+                                            <Button title="Edit" onPress={() => editText(post.id, post.body)}></Button>
+                                        </>
+                                    )
+                                }
+                            </>
+                        }
+ 
+                    </Card>
                 ))}
-            </View>
+            </ScrollView>
         )
     }
 
@@ -30,7 +73,12 @@ const UserPost = ({ route }: Props) => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      alignItems: 'center',
+    },
+    input: {
+        borderWidth: 1,
+        borderRadius: 5,
+        borderColor: 'grey',
+        padding: 10,
     }
 });
 

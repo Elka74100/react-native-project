@@ -1,11 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
+import Counter from '../models/counter'
 import { RootState } from '../store'
 
-interface CounterState {
-  value: number
-}
-
-const initialState: CounterState = {
+const initialState: Counter = {
   value: 0,
 }
 

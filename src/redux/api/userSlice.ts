@@ -1,5 +1,5 @@
-import { apiSlice } from "../apiSlice";
-import User from "./userModel";
+import { apiSlice } from "./apiSlice";
+import User from "../models/user";
 
 export const usersApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
