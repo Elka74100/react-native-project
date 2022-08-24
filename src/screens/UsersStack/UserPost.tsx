@@ -49,6 +49,7 @@ const UserPost = ({ route }: Props) => {
                                                 value={text}
                                                 />
                                             <Button title="Submit" onPress={() => submitText(post, text)}></Button>
+                                            <Button title="Cancel" onPress={() => setPostToEdit(null)}></Button>
                                         </>
                                     ) 
                                     : (

@@ -13,12 +13,25 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
                 ]
                 : [{ type: 'Post', id: "LIST" }]
         }),
-        updatePost: builder.mutation<Post[], Post>({
+        updatePost: builder.mutation({
             query: (post) => ({
                 url: `/posts/${post.id}`,
                 method: 'PUT',
                 body: { ...post },
             }),
+            async onQueryStarted(post, { dispatch, queryFulfilled }) {
+                const patchCollection = dispatch(
+                    extendedApiSlice.util.updateQueryData('getPostsByUserId', post.userId, (draft) => {
+                        const objIndex = draft.findIndex((obj => obj.id == post.id));
+                        draft[objIndex] = post
+                    })
+                )
+                try {
+                    await queryFulfilled
+                } catch {
+                    patchCollection.undo()
+                }
+            },
             invalidatesTags: (result, error, arg) => [
                 { type: 'Post', id: arg.id }
             ]       
