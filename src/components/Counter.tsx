@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, StyleSheet, Text, View } from 'react-native'
-import { useAppDispatch, useAppSelector } from '../redux/hooks'
+import { useAppDispatch, useAppSelector } from '../redux/store'
 import { counterActions, selectCounter } from '../redux/slices/counterSlice'
 
  const Counter = () => {
