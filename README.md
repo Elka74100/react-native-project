@@ -11,6 +11,7 @@ The list of softwares you should install:
 - NodeJS
 - Watchman
 - Xcode
+- Android Studio
 - Cocoapods
 - Json Server (to run the fake backend)
 
@@ -30,9 +31,17 @@ cd data
 npx json-server --watch --delay 1000 db.json
 ```
 
-# Run the application (iOS)
+# Run the application
+## iOS
 ```sh
 npm run ios
+```
+
+## Android
+Replace in the apiSlice.ts file the 'http://localhost:3000' by 'http://10.0.2.2:3000'
+
+```sh
+npm run android
 ```
 
 # Debug the  React component hierarchy
