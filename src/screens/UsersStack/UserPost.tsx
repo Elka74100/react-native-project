@@ -2,7 +2,7 @@ import { StackScreenProps } from "@react-navigation/stack"
 import React, { useState } from "react"
 import { StyleSheet, Text, ScrollView, Button, TextInput } from "react-native"
 import { UserParamlist } from "../../navigations/UserStack"
-import { useGetPostsByUserIdQuery, useUpdatePostMutation } from "../../redux/api/postApiSlice"
+import { useGetPostsByUserIdQuery, useUpdatePostMutation } from "../../redux/api/firstApi/postApiSlice"
 import { Card } from "@rneui/themed";
 import Post from "../../redux/models/post"
 
