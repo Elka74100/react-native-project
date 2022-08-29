@@ -2,7 +2,7 @@ import { StackScreenProps } from "@react-navigation/stack"
 import React, { useEffect } from "react"
 import { StyleSheet, Text, Button, ScrollView, RefreshControl } from "react-native"
 import { UserParamlist } from "../../navigations/UserStack"
-import { useGetUsersQuery } from "../../redux/api/userApiSlice"
+import { useGetUsersQuery } from "../../redux/api/firstApi/userApiSlice"
 
 type Props = StackScreenProps<UserParamlist, "UserList">
 
