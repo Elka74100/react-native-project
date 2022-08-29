@@ -54,5 +54,5 @@ npm install -g react-devtools
 react-devtools
 ```
 ## Open the debugging panel (iOS emulator)
-Cmd + Ctrl + D in the emulator
+Cmd + D in the emulator
 
