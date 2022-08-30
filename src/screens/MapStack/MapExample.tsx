@@ -1,7 +1,7 @@
 import { Button } from "@rneui/base";
 import React, { useRef } from "react"
 import { StyleSheet, View } from "react-native";
-import MapView, { Marker }  from 'react-native-maps';
+import MapView from 'react-native-maps';
 
 const MapExample = () => {
     const tokyoRegion = {
@@ -9,14 +9,14 @@ const MapExample = () => {
         longitude: 139.6503,
         latitudeDelta: 0.01,
         longitudeDelta: 0.01,
-      };
+    };
 
     const londonRegion = {
         latitude: 51.5079145,
         longitude: -0.0899163,
         latitudeDelta: 0.01,
         longitudeDelta: 0.01,
-      };
+    };
 
     const mapRef = useRef<any>(null);
 
