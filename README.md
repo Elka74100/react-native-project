@@ -3,7 +3,7 @@ It is an app which contains a :
 - simple "article posting" functionality
 - counter
 - fetch with access token 
-- map
+- map (not working on Android because it needs a Google API key)
 - geolocalization functionality 
 
 # Built with 
