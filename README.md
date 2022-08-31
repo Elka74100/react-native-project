@@ -56,3 +56,16 @@ react-devtools
 ## Open the debugging panel (iOS emulator)
 Cmd + D in the emulator
 
+## How to install a new package
+```sh
+npm i my-super-package
+```
+
+Don't forget to update the ios package
+
+```sh
+cd ios
+```
+```sh
+pod install
+```

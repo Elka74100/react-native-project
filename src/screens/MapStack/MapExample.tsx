@@ -2,16 +2,20 @@ import { Button } from "@rneui/base";
 import React, { useRef } from "react"
 import { StyleSheet, View } from "react-native";
 import MapView from 'react-native-maps';
+import useGetLocation, { Location } from "../../customHooks/getLocation";
 
 const MapExample = () => {
-    const tokyoRegion = {
+
+    const myLocation = useGetLocation()
+    
+    const tokyoRegion: Location = {
         latitude: 35.6762,
         longitude: 139.6503,
         latitudeDelta: 0.01,
         longitudeDelta: 0.01,
     };
 
-    const londonRegion = {
+    const londonRegion: Location = {
         latitude: 51.5079145,
         longitude: -0.0899163,
         latitudeDelta: 0.01,
@@ -20,7 +24,7 @@ const MapExample = () => {
 
     const mapRef = useRef<any>(null);
 
-    const goToCity = (city: Object) => {
+    const goToCity = (city?: Location) => {
         mapRef.current?.animateToRegion(city, 3 * 1000);
     };
 
@@ -33,6 +37,7 @@ const MapExample = () => {
             />
             <Button onPress={() => goToCity(tokyoRegion)} title="Go to Tokyo" />
             <Button onPress={() => goToCity(londonRegion)} title="Go to London" />
+            <Button onPress={() => goToCity(myLocation)} title="Go to my location" />
         </View>
     )
 }
