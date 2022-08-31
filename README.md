@@ -1,5 +1,10 @@
 # About the project 
-It is a simple "article posting" project
+It is an app which contains a : 
+- simple "article posting" functionality
+- counter
+- fetch with access token 
+- map
+- geolocalization functionality 
 
 # Built with 
 - React Native
