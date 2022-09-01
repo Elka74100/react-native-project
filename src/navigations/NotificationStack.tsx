@@ -1,17 +1,17 @@
 import React from 'react';
 import { createStackNavigator } from "@react-navigation/stack"
-import Notification from '../screens/NotificationStack/Notification';
+import NotificationExample from '../screens/NotificationStack/NotificationExample';
 
 
 export type NotificationStackParamlist = {
-    Notification: undefined;
+    NotificationExample: undefined;
 }
 
 const NotificationStack = () => {
     const Stack = createStackNavigator<NotificationStackParamlist>();
     return (
-        <Stack.Navigator initialRouteName="Notification">
-            <Stack.Screen name="Notification" component={Notification}/>
+        <Stack.Navigator initialRouteName="NotificationExample">
+            <Stack.Screen name="NotificationExample" component={NotificationExample}/>
         </Stack.Navigator>
     )
 }
