@@ -5,6 +5,7 @@ It is an app which contains a :
 - fetch with access token 
 - map (not working on Android because it needs a Google API key)
 - geolocalization functionality 
+- notification show up on press
 
 # Built with 
 - React Native
